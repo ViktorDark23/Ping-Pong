@@ -11,6 +11,19 @@ WIDTH, HEIGHT = 500, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pong Pong")
 
+class Player(GameSprite):
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w] and paddle1.top > 0:
+            paddle1.y -= 5
+        if keys[pygame.K_s] and paddle1.bottom < HEIGHT:
+            paddle1.y += 5
+            def update(self):
+        if keys[pygame.K_UP] and paddle2.top > 0:
+            paddle2.y -= 5
+        if keys[pygame.K_DOWN] and paddle2.bottom < HEIGHT:
+            paddle2.y += 5
+
 PADDLE_WIDTH, PADDLE_HEIGHT = 10, 60
 PADDLE_BUFFER = 10
 
@@ -49,16 +62,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_w] and paddle1.top > 0:
-            paddle1.y -= 5
-        if keys[pygame.K_s] and paddle1.bottom < HEIGHT:
-            paddle1.y += 5
-        if keys[pygame.K_UP] and paddle2.top > 0:
-            paddle2.y -= 5
-        if keys[pygame.K_DOWN] and paddle2.bottom < HEIGHT:
-            paddle2.y += 5
 
         ball_x_speed, ball_y_speed = move_ball(ball, ball_x_speed, ball_y_speed)
 
